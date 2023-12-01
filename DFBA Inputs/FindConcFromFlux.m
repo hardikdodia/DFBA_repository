@@ -8,8 +8,8 @@ function M = FindConcFromFlux(q,X,Time,Feed_Time,dMdt,V,F,Mf,Kd,M0)
     if Kd == 0
         M(batch) = M0 + q(batch).*(X(batch)).*(Time(batch));
     else
-        M(batch) = (dMdt(batch) - (q(batch).*X(batch)))/Kd;
+        M(batch) = (dMdt(batch) - (q(batch).*X(batch)))/-Kd; %changed sign
     end
-    M(fedBatch) = (dMdt(fedBatch) - ((F*Mf)./V(fedBatch)) - (q(fedBatch).*X(fedBatch)))./(Kd - (F./V(fedBatch)));
+    M(fedBatch) = (dMdt(fedBatch) - ((F*Mf)./V(fedBatch)) - (q(fedBatch).*X(fedBatch)))./(-Kd - (F./V(fedBatch))); % changed sign
 
 end
