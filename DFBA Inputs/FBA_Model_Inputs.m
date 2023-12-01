@@ -100,8 +100,8 @@ MfKd0 = rand(2,1);
 Mf_LB = 0;
 Mf_UB = inf;
 
-Kd_LB = -inf;
-Kd_UB = 0;
+Kd_LB = 0; %Bounds changed 
+Kd_UB = inf;
 
 % True Absolute Metabolites %
 % M0_TAbs = Expt_NCC_Conc_TAbs(1,:);
