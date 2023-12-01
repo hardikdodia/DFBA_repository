@@ -8,12 +8,12 @@ function M = TestMfKd(p,t,M0,V0,F,Feed_Time)
 
     function dM_Batch = massbalance_Batch(t,x)
         dM_Batch = zeros(1,1);
-        dM_Batch(1) = p(2).*x(1);
+        dM_Batch(1) = -p(2).*x(1); % changed sign
     end
 
     function dM_FedBatch = massbalance_FedBatch(t,x) 
         dM_FedBatch = zeros(2,1);
-        dM_FedBatch(1) = ((F./x(2)).*(p(1) - x(1))) + (p(2).*x(1));
+        dM_FedBatch(1) = ((F./x(2)).*(p(1) - x(1))) - (p(2).*x(1)); % changed sign 
         dM_FedBatch(2) = F;
     end
    
