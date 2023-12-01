@@ -11,8 +11,8 @@ function q = FindFlux(OD,ODCF,M,dMdt,Feed_Time_Index,Type,p1,p2,Volume,F)
    
     elseif Type == 2
         for i = 1:size(M,2)
-            q(Batch,i) = (dMdt(Batch,i) - (p2(i)*(M(Batch,i))))./(ODCF*OD(Batch));
-            q(FedBatch,i) = (dMdt(FedBatch,i) - (p2(i)*(M(FedBatch,i))) - ((F*(p1(i) - M(FedBatch,i)))./V(FedBatch)))./(ODCF*OD(FedBatch));
+            q(Batch,i) = (dMdt(Batch,i) + (p2(i)*(M(Batch,i))))./(ODCF*OD(Batch));% changed sign
+            q(FedBatch,i) = (dMdt(FedBatch,i) + (p2(i)*(M(FedBatch,i))) - ((F*(p1(i) - M(FedBatch,i)))./V(FedBatch)))./(ODCF*OD(FedBatch));% changed sign
         end
     end
 end
